@@ -1,0 +1,87 @@
+
+message AddVectorByConstantParameter {
+  optional float add_value = 1 [default = 0.0];
+}
+
+
+message DeepHandModelGen3DHeatmapParameter {
+   optional uint32 depth_dims = 1 [default = 101];
+   optional uint32 map_size = 2 [default = 224];
+   optional float sigma = 3 [default = 0.01];   
+   optional uint32 joint_num = 4 [default = 16];   
+}
+
+
+
+message DeepHandModelGenRandIndexParameter {
+  optional uint32 index_lower_bound = 1 [ default = 1];
+  optional uint32 index_upper_bound = 2 [ default = 10000];
+  optional uint32 batch_size = 3 [ default = 16];
+  optional string missing_index_file = 4 [default="D:\\"];
+}
+
+
+message DeepHandModelIntegralVectorParameter {
+  optional float dim_lb = 1 [default = -1.0];
+  optional float dim_ub = 2 [default = 1.0];
+}
+
+
+
+message DeepHandModelOutputJointOnSkeletonMapParameter {
+  optional bool use_raw_rgb_image = 1 [default = false];
+  optional bool read_from_disk = 2 [default = false];
+  optional string raw_rgb_image_path = 3 [default = "D:\\"];
+  optional bool show_gt = 4 [default = true];
+
+  optional string save_path = 5 [default = "D:\\"];
+  optional uint32 save_size = 6 [default = 224 ];
+  
+  optional uint32 skeleton_size = 7 [default = 224];  
+  
+  optional bool load_skeleton = 8 [default = true];
+  
+  optional string dataset_name = 9 [default = "standard"];
+  optional uint32 joint_num = 10 [default = 31];
+}
+
+
+
+
+message DeepHandModelPinholeCameraOriginParameter {
+  optional float focusx = 1 [default = 475.065948];
+  optional float focusy = 2 [default = 475.065857];
+  optional float u0offset = 3 [default = 315.944855];
+  optional float v0offset = 4 [default = 245.287079];
+}
+
+
+message DeepHandModelReadDepthNoBBXWithAVGZParameter {
+  optional string file_prefix = 1 [default = "D:\\"];
+  optional uint32 depth_size = 2 [default = 224]; 
+}
+
+
+
+message GenSequentialIndexParameter {
+  optional uint32 batch_size = 1 [default = 16];
+  optional string current_index_file_path = 2 [default = "D:\\"];
+  optional uint32 num_of_samples = 3 [default = 1000];
+  optional uint32 start_index = 4 [default = 0];
+  
+}
+
+
+message ReadBlobFromFileIndexingParameter {
+  optional string file_prefix = 1 [default = "D:\\"];
+  optional uint32 num_to_read = 2 [default = 21];
+}
+
+
+
+message ReadIndexFromFileParameter {
+  optional string index_file_path = 1 [default = "D:\\"];
+  optional string current_index_file_path = 2 [default = "D:\\"];
+  optional uint32 batch_size = 3 [default = 16];
+  optional uint32 num_of_samples = 4 [default = 100];
+}
