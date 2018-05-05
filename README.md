@@ -6,6 +6,8 @@ The dataset is released in the workshop of ICCV 2017.
 
 The backbone network is 2-stage Stacked Hourglass. Many thanks to Guanghan Ning's caffe Hourglass version
   https://github.com/Guanghan/GNet-pose. 
+
+For detail about the dataset, please refer to another repository "https://github.com/strawberryfg/Hands2017ChallengeCompositionalPoseRegression"
   
 About 3D integral regression (originally devised for human pose estimation):
 
