@@ -279,6 +279,33 @@ namespace caffe{
 
 	
 	
+	
+	template <typename Dtype>
+	class DeepHandModelProjectionLocal2Global3DLayer : public Layer<Dtype> {
+	public:
+		explicit DeepHandModelProjectionLocal2Global3DLayer(const LayerParameter& param)
+			: Layer<Dtype>(param) { }
+		virtual void LayerSetUp(const vector<Blob<Dtype>*>& bottom,
+			const vector<Blob<Dtype>*>& top);
+		virtual void Reshape(const vector<Blob<Dtype>*>& bottom,
+			const vector<Blob<Dtype>*>& top);
+
+		virtual inline const char* type() const { return "DeepHandModelProjectionLocal2Global3D"; }
+		virtual inline int ExactNumBottomBlobs() const { return 8; }
+		virtual inline int ExactNumTopBlobs() const { return 1; }
+
+	protected:
+		virtual void Forward_cpu(const vector<Blob<Dtype>*>& bottom,
+			const vector<Blob<Dtype>*>& top);
+		virtual void Backward_cpu(const vector<Blob<Dtype>*>& top,
+			const vector<bool>& propagate_down, const vector<Blob<Dtype>*>& bottom);
+		double focusx_;
+		double focusy_;
+		double u0offset_;
+		double v0offset_;
+	};
+
+	
     template <typename Dtype>
     class DeepHandModelProjectionGlobal2LocalLayer : public Layer<Dtype> {
     public:

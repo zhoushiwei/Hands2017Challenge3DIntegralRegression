@@ -9,6 +9,11 @@ The backbone network is 2-stage Stacked Hourglass. Many thanks to Guanghan Ning'
 
 For detail about the dataset, please refer to another repository "https://github.com/strawberryfg/Hands2017ChallengeCompositionalPoseRegression"
   
+Set weights of loss_joints and loss2_joints both to 1.0 (only 3D heatmap loss), with base learning rate at 
+0.00025, results in validation error around 9.36mm (since test ground truth is not accessible)
+  
+learning rate is dwindled by a factor of 5 after each loss plateau
+  
 About 3D integral regression (originally devised for human pose estimation):
 
 @article{sun2017integral,

@@ -19799,22 +19799,53 @@ layer {
 }
 
 
-#------Get the origin gt 3d
+
+layer {
+  bottom: "pred_joint_3d"
+  bottom: "pred_joint_3d"
+  top: "pred_joint_3d_nothing"
+  name: "pred_joint_3d_nothing"
+  type: "EuclideanLoss"
+  loss_weight: 0.0
+}
+
+
+#local projection [0, 1] to global 3D coordinate in world space
 layer {
   name: "pred_joint_3d_raw"
-  type: "DeepHandModelCubiodIntoGlobalV2"
-  bottom: "pred_joint_3d"
-  bottom: "min_x"
-  bottom: "max_x"
-  bottom: "min_y"
-  bottom: "max_y"
+  bottom: "pred_joint_2d"
+  bottom: "pred_depth"
+  bottom: "bbx_x1"
+  bottom: "bbx_y1"
   bottom: "min_z"
+  bottom: "bbx_x2"
+  bottom: "bbx_y2"
   bottom: "max_z"
   top: "pred_joint_3d_raw"
-  
+  type: "DeepHandModelProjectionLocal2Global3D"
 }
+
+
+
+#obsoleted
+#------Get the origin gt 3d
+#layer {
+  #name: "pred_joint_3d_raw"
+  #type: "DeepHandModelCubiodIntoGlobalV2"
+  #bottom: "pred_joint_3d"
+  #bottom: "min_x"
+  #bottom: "max_x"
+  #bottom: "min_y"
+  #bottom: "max_y"
+  #bottom: "min_z"
+  #bottom: "max_z"
+  #top: "pred_joint_3d_raw"
+#  
+#}
   
   
+  
+#---------average joint error in 3D space (mm) convenient for debugging
 layer {
   bottom: "pred_joint_3d_raw"
   bottom: "gt_joint_3d_raw"
@@ -19823,3 +19854,4 @@ layer {
   type: "Joint3DSquareRootLoss"
   loss_weight: 0.0
 }  
+  

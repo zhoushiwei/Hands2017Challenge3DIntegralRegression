@@ -56,6 +56,16 @@ message DeepHandModelPinholeCameraOriginParameter {
 }
 
 
+
+message DeepHandModelProjectionLocal2Global3DParameter {  
+  optional float focusx = 1 [default = 475.065948];
+  optional float focusy = 2 [default = 475.065857];
+  optional float u0offset = 3 [default = 315.944855];
+  optional float v0offset = 4 [default = 245.287079];
+}
+
+
+
 message DeepHandModelReadDepthNoBBXWithAVGZParameter {
   optional string file_prefix = 1 [default = "D:\\"];
   optional uint32 depth_size = 2 [default = 224]; 
